@@ -5,10 +5,11 @@
 
 void main(void) 
 {  
-  //configureClocks();
+  configureClocks();
   switch_init();
   //led_init();
   buzzer_init();
+  enableWDTInterrupts();
 
   or_sr(0x18);  // CPU off, GIE on
 } 

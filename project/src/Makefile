@@ -18,9 +18,9 @@ load: button.elf
 	msp430loader.sh button.elf
 
 clean:
-	rm -f *.o *.elf
+	rm -f *.o *.elf *~
 
 main.c: buzzer.h switches.h
 
-buzzer.c: buzzer.h
+buzzer.c: buzzer.h notes.h
 
