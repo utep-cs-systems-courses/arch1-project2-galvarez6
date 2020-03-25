@@ -8,7 +8,7 @@ the states every 125th of a second.
 
 switch | function
 ------ | --------
-Button1|
+Button1| uses states to cycle through 2 different sounds.
 Button2|
 Button3| plays song1
 Button4| plays song2
@@ -27,7 +27,7 @@ if there was an iterrupt that occurs from the bits P2.0 - P2.3. Switch
 interrupt handler can take the value from interrupt sense and compare it the
 P2.0-P2.3 bits to detect what switch caused the interrupt to occur. In the
 handler, the if statements are used to perform the action based on the switch
-pressed, this is just determining what song is played. 
+pressed, this is just determining what song/notes are played. 
 
 ## notes.h
 notes.h is used to define the notes and periods assigned to the notes. In

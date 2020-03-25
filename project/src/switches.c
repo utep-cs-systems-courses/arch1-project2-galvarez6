@@ -32,6 +32,7 @@ switch_init()			/* setup switch */
 void
 switch_interrupt_handler()
 {
+  static enum {First, Second, Third} soundState = First;
   char p2val = switch_update_interrupt_sense();
   char btn1down = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
   char btn2down = (p2val & SW2) ? 0 : 1;
@@ -40,7 +41,12 @@ switch_interrupt_handler()
 
   
   if(btn1down){
-    buzzer_set_period(10000);
+    switch(soundState){
+    case First: buzzer_set_period(0); soundState = Second; break;
+    case Second: buzzer_set_period(1000); soundState = Third; break;
+    case Third: buzzer_set_period(5000); soundState = First; break;
+    }
+    //buzzer_set_period(10000);
   }
   if(btn2down){
     buzzer_set_period(50000);
