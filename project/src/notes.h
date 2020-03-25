@@ -11,5 +11,3 @@
 
 #define Dflat 277
 
-void song1();
-void song2();
