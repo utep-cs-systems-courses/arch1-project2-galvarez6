@@ -2,6 +2,7 @@
 #include "switches.h"
 #include "buzzer.h"
 #include "notes.h"
+#include "led.h"
 
 char switch_state_down, switch_state_changed; /* effectively boolean */
 int song_1[]={F4, A4, B4, F4, A4, B4, F4, A4, B4, E4, D4, C4, B4, C4, G4, E4, D4, D4, E4, G4};

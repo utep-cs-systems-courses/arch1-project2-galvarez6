@@ -2,12 +2,13 @@
 #include "libTimer.h"
 #include "switches.h"
 #include "buzzer.h"
+#include "led.h"
 
 void main(void) 
 {  
   configureClocks();
   switch_init();
-  //led_init();
+  led_init();
   buzzer_init();
   enableWDTInterrupts();
 

@@ -1,7 +1,6 @@
 #include <msp430.h>
-#include "buzzer.h"
-#include "notes.h"
-
+#include "led.h"
+#include "states.h"
 void
 __interrupt_vec(WDT_VECTOR) WDT(){
   static char blink_count = 0;
