@@ -3,6 +3,6 @@
 	.text
 
 
-	.global assembleAdvance
-button2State:	add #1, &assembleAdvance
-	cmp #2, &assembleAdvance
+	.global add2State
+add2State:	add #1, &add2State
+	cmp #2, &add2State

@@ -9,7 +9,7 @@ the states every 125th of a second.
 switch | function
 ------ | --------
 Button1| uses states to cycle through 2 different sounds.
-Button2|
+Button2| attempts to use assemble file to move through states to play notes
 Button3| plays song1
 Button4| plays song2
 
@@ -35,4 +35,8 @@ switches.c int arrays are difined using the notes, these int arrays correspond
 to songs. In the if statements of the switch interrupt handler these int
 arrays are itterated through passing each note to buzzer set period to play
 the note on the speaker. Delay cycles is used to increase the amount of time a
-note is played (in other words delays the notes to run at nMHZ). 
+note is played (in other words delays the notes to run at nMHZ).
+
+## assembly.s and assemlbly.h
+attempts to increment a global value when button 2 is pressed, which moves
+through the states to play notes.

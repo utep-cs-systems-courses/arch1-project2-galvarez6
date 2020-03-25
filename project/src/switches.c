@@ -35,7 +35,7 @@ void
 switch_interrupt_handler()
 {
   static enum {First, Second, Third} soundState = First;
-  static enum {F2 = 1, S2 = 2, T2 = 3} b2State = F2;
+  static enum {F2 = 1, S2 = 2, T2 = 3} assembleAdvance = F2;
   char p2val = switch_update_interrupt_sense();
   char btn1down = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
   char btn2down = (p2val & SW2) ? 0 : 1;
@@ -52,10 +52,11 @@ switch_interrupt_handler()
     //buzzer_set_period(10000);
   }
   if(btn2down){
-    switch(b2State){
-    case 1: buzzer_set_period(0); b2State = assembleAdvance; break;
-    case 2: buzzer_set_period(600); b2State = assembleAdvance; break;
-    case 3: buzzer_set_period(440); b2State = assembleAdvance; break;
+    add2State(assembleAdvance);
+    switch(assembleAdvance){
+    case 1: buzzer_set_period(0); assembleAdvance = assembleAdvance; break;
+    case 2: buzzer_set_period(600); assembleAdvance = assembleAdvance; break;
+    case 3: buzzer_set_period(440); assembleAdvance = assembleAdvance; break;
     }
   }
   if(btn3down){
