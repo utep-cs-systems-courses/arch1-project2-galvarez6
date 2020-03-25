@@ -3,10 +3,12 @@
 #include "buzzer.h"
 #include "notes.h"
 #include "led.h"
+#include "assembly.h"
 
 char switch_state_down, switch_state_changed; /* effectively boolean */
 int song_1[]={F4, A4, B4, F4, A4, B4, F4, A4, B4, E4, D4, C4, B4, C4, G4, E4, D4, D4, E4, G4};
 int song_2[]={B4, E4, G4, B4, E4, G4, E4, D4, Dflat, A4, G4, A4, B4, E4, D4, G4, E4};
+int assembleAdvance = 1;
 
 static char 
 switch_update_interrupt_sense()
@@ -33,6 +35,7 @@ void
 switch_interrupt_handler()
 {
   static enum {First, Second, Third} soundState = First;
+  static enum {F2 = 1, S2 = 2, T2 = 3} b2State = F2;
   char p2val = switch_update_interrupt_sense();
   char btn1down = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
   char btn2down = (p2val & SW2) ? 0 : 1;
@@ -49,7 +52,11 @@ switch_interrupt_handler()
     //buzzer_set_period(10000);
   }
   if(btn2down){
-    buzzer_set_period(50000);
+    switch(b2State){
+    case 1: buzzer_set_period(0); b2State = assembleAdvance; break;
+    case 2: buzzer_set_period(600); b2State = assembleAdvance; break;
+    case 3: buzzer_set_period(440); b2State = assembleAdvance; break;
+    }
   }
   if(btn3down){
     for(int i = 0; i < 20; i++){
