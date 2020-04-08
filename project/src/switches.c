@@ -52,12 +52,7 @@ switch_interrupt_handler()
     //buzzer_set_period(10000);
   }
   if(btn2down){
-    add2State(assembleAdvance);
-    switch(assembleAdvance){
-    case 1: buzzer_set_period(0); assembleAdvance = assembleAdvance; break;
-    case 2: buzzer_set_period(600); assembleAdvance = assembleAdvance; break;
-    case 3: buzzer_set_period(440); assembleAdvance = assembleAdvance; break;
-    }
+    nextS();
   }
   if(btn3down){
     for(int i = 0; i < 20; i++){

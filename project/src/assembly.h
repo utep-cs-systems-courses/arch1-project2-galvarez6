@@ -1,6 +1,8 @@
 #ifndef assembly_included
 #define assemble_included
+#include "buzzer.h"
+#include "switches.h"
 
-void add2State(int assembleAdvance);
+void nextS();
 
 #endif
