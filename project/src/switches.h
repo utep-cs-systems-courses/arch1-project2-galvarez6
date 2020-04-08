@@ -1,5 +1,6 @@
 #ifndef switches_included
 #define switches_included
+#include "assembly.h"
 
 #define SW1 BIT0		/* switch1 is p2.0 */
 #define SW2 BIT1
@@ -11,5 +12,5 @@ void switch_init();
 void switch_interrupt_handler();
 
 extern char switch_state_down, switch_state_changed; /* effectively boolean */
-extern char SW3_toggle;
+
 #endif // included
