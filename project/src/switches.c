@@ -49,7 +49,6 @@ switch_interrupt_handler()
     case Second: buzzer_set_period(1000); soundState = Third; break;
     case Third: buzzer_set_period(5000); soundState = First; break;
     }
-    //buzzer_set_period(10000);
   }
   if(btn2down){
     nextS();
