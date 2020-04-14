@@ -16,6 +16,8 @@ jt:
 	.global nextS
 nextS:
 	mov &ss, r12		;index in jt
+	cmp #4, r12
+	jc out
 	add r12, r12		;for referencing the correct case
 	mov jt(r12), r0		;jmp to jt[ss]
 
@@ -25,16 +27,18 @@ s1:	mov #500, r12		;pass parameter for set buzzer period
 	jmp out			;break
 
 
+
 s2:	mov #700, r12
 	call #buzzer_set_period
 	mov #3, &ss
-	jmp out
+	jmp out			;break
+
 
 
 s3:	mov #0, r12
 	call #buzzer_set_period
 	mov #1, &ss
-	jmp out
+	jmp out			;break
 
 
 default:
@@ -42,4 +46,5 @@ default:
 	call #buzzer_set_period
 	jmp out
 
-out:	pop r0
+out:	mov #1, r12
+	pop r0
