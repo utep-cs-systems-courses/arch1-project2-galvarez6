@@ -6,7 +6,7 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 
 #switch the compiler (for the internal make rules)
 CC              = msp430-elf-gcc
-AS              = msp430-elf-as
+AS              = msp430-elf-as -mcpu=msp430 --traditional-format -mP
 
 all: button.elf 
 
